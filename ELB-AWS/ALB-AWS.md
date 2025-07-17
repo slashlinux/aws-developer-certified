@@ -174,3 +174,26 @@ resource "aws_lb_target_group" "my_app" {
 - [ALB – AWS Official Docs](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html)
 - [ACM Certificate Setup](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request.html)
 - [ALB Ingress Controller (EKS)](https://kubernetes-sigs.github.io/aws-load-balancer-controller/)
+---
+
+## 🖱️ Cum activezi Sticky Sessions (Stickiness) din AWS Console (GUI)
+
+### 🔐 Scenariu: Ai un ALB și vrei să te asiguri că un utilizator este trimis către aceeași instanță backend cât timp sesiunea sa este activă.
+
+### 🔹 Pași pentru a activa Sticky Sessions:
+
+1. Accesează **AWS Console** → Navighează la **EC2** → secțiunea **Load Balancers**.
+2. Selectează ALB-ul dorit.
+3. Mergi la tabul **Target Groups** din meniul lateral stânga.
+4. Selectează target group-ul asociat aplicației tale (ex: `my-app-tg`).
+5. Click pe tabul **Attributes**.
+6. La secțiunea **Stickiness**, apasă pe **Edit**.
+7. Activează opțiunea **Stickiness enabled**.
+8. Selectează tipul de stickiness:
+   - `Application-based (lb_cookie)`
+9. Setează durata (ex: `3600` secunde = 1 oră).
+10. Apasă **Save changes**.
+
+🎯 După acești pași, utilizatorul va primi un cookie `AWSALB=...` care îl va păstra pe același backend până expiră cookie-ul sau instanța devine indisponibilă.
+
+---
