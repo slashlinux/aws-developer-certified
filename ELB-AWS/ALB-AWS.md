@@ -1,4 +1,7 @@
 # AWS Application Load Balancer (ALB) – Ghid complet
+<img width="1119" height="531" alt="Screenshot 2025-07-17 at 12 43 41" src="https://github.com/user-attachments/assets/4abbb7d3-c9a7-4b5e-97c3-4d5fd231e332" />
+
+
 
 ## 🔷 Ce este ALB?
 
@@ -9,6 +12,8 @@ Application Load Balancer (ALB) este un serviciu AWS Elastic Load Balancing care
 ## 📌 Când se folosește?
 
 ALB este recomandat când:
+<img width="1115" height="537" alt="Screenshot 2025-07-17 at 12 44 57" src="https://github.com/user-attachments/assets/d09786ab-5df0-4586-ada9-5d22d14db2b0" />
+
 
 - Ai aplicații web REST sau microservicii
 - Vrei routing pe bază de path/host (ex: `/api`, `admin.site.com`)
