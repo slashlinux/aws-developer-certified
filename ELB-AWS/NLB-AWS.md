@@ -61,7 +61,8 @@
 - **Target Group (IP, EC2, Lambda)**
 - **Health Check (TCP sau HTTP/HTTPS)**
 
-- <img width="1049" height="545" alt="image" src="https://github.com/user-attachments/assets/65c4e65c-b0c2-4b79-bf66-5cc38acb9ca9" />
+<img width="1089" height="549" alt="image" src="https://github.com/user-attachments/assets/279aff49-2551-4f18-be20-e7c3f48fd4e8" />
+
 
 
 ---
