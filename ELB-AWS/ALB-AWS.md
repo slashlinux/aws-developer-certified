@@ -201,6 +201,62 @@ resource "aws_lb_target_group" "my_app" {
 
 ---
 
+
+---
+
+## 🛡️ Security Group pentru ALB
+
+### 🔄 Flux de trafic (simplificat)
+
+```
+[User / Browser] 
+       │
+       ▼
+[ Application Load Balancer (ALB) ]
+       │
+       ▼
+[ Target Group (EC2 / ECS / EKS / Lambda) ]
+```
+
+---
+
+## 📥 INBOUND (trafic către ALB – definit în SG-ul atașat ALB)
+
+| Protocol | Port | Source      | Scop                      |
+|----------|------|-------------|---------------------------|
+| TCP      | 80   | 0.0.0.0/0   | Permite trafic HTTP       |
+| TCP      | 443  | 0.0.0.0/0   | Permite trafic HTTPS      |
+
+- Aceste reguli permit acces public către aplicația ta.
+- Poți restricționa `Source` la IP-uri private (ex: VPN, rețele interne).
+
+---
+
+## 📤 OUTBOUND (trafic de la ALB spre targeturi – controlat de target)
+
+> ALB nu are nevoie de reguli OUTBOUND specifice.  
+> **Targetul** (ex: EC2) trebuie să permită INBOUND **de la ALB Security Group**.
+
+---
+
+## 🎯 EC2 / ECS / EKS: Security Group Target
+
+| Protocol | Port  | Source            | Scop                                   |
+|----------|-------|-------------------|----------------------------------------|
+| TCP      | 8080  | SG-ul ALB-ului    | Permite ALB să trimită trafic spre EC2 |
+
+> Dacă aplicația rulează pe alt port (ex: 3000, 5000), setează acel port în INBOUND SG-ul instanței.
+
+---
+
+## 🧠 Recomandare DevOps:
+
+- Nu folosi `0.0.0.0/0` pentru EC2 direct – folosește `source = SG-ul ALB`
+- Verifică că **portul backendului** corespunde cu cel din Target Group
+- În AWS Console, SG-ul ALB-ului se configurează la crearea load balancerului sau ulterior din tabul **Description**
+
+---
+
 ## ❤️ Health Check în ALB
 
 ALB verifică în mod periodic starea backend-urilor (EC2, ECS, IP etc.) printr-un mecanism numit **health check**.
