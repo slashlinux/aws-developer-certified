@@ -2,7 +2,8 @@
 
 # AWS Network Load Balancer (NLB) – Ghid complet
 
-<img width="1097" height="513" alt="image" src="https://github.com/user-attachments/assets/b56204ee-ffec-4a42-ab72-85cbb42f54f8" />
+<img width="1083" height="541" alt="image" src="https://github.com/user-attachments/assets/69ca3170-1520-462b-8917-284ab979f5cb" />
+
 
 ## 🔷 Ce este NLB?
 
