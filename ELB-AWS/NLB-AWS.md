@@ -9,6 +9,9 @@
 
 **Network Load Balancer (NLB)** este un tip de Elastic Load Balancer oferit de AWS care funcționează la nivelul **Layer 4 (Transport – TCP/UDP/TLS)**. Este proiectat pentru performanță ultra-rapidă, low latency și suport pentru milioane de conexiuni simultane.
 
+<img width="1049" height="550" alt="image" src="https://github.com/user-attachments/assets/52576797-b404-44ee-b63d-eb9b2a6a946d" />
+
+
 ---
 
 ## 📌 Când și de ce se folosește NLB?
@@ -57,6 +60,9 @@
 - **Listeners (ex: TCP 443, TCP 25)**
 - **Target Group (IP, EC2, Lambda)**
 - **Health Check (TCP sau HTTP/HTTPS)**
+
+- <img width="1049" height="545" alt="image" src="https://github.com/user-attachments/assets/65c4e65c-b0c2-4b79-bf66-5cc38acb9ca9" />
+
 
 ---
 
