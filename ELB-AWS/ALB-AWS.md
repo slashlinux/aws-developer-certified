@@ -222,7 +222,7 @@ resource "aws_lb_target_group" "my_app" {
 
 ---
 
-## 📥 INBOUND (trafic către ALB – definit în SG-ul atașat ALB)
+## 📥 INBOUND (User face trafic către ALB – definit în SG-ul atașat ALB)
 
 | Protocol | Port | Source      | Scop                      |
 |----------|------|-------------|---------------------------|
