@@ -4,6 +4,7 @@
 ## 🔷 Ce este Cross-Zone Load Balancing?
 
 **Cross-Zone Load Balancing** este o funcționalitate a AWS Elastic Load Balancer (ELB) care permite distribuirea traficului între **toate instanțele din toate Availability Zones (AZ)**, indiferent de zona în care a ajuns cererea.
+<img width="1099" height="541" alt="image" src="https://github.com/user-attachments/assets/53e38f87-a5c3-487f-ab73-bde286a6f870" />
 
 ---
 
