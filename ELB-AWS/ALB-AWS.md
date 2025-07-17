@@ -24,6 +24,7 @@ ALB este recomandat când:
 ---
 
 ## 🔑 Functionalități cheie
+<img width="1113" height="550" alt="image" src="https://github.com/user-attachments/assets/8a70aca9-b0d5-4119-abc4-66fccb618b92" />
 
 - **Host-based routing**: `api.example.com` → service A
 - **Path-based routing**: `/admin/*` → service B
@@ -55,6 +56,13 @@ Dacă vrei HTTPS:
 - Validează domeniul (DNS recomandat)
 - Atașează certificatul la Listener-ul de pe portul 443
 - Activează redirect de la HTTP → HTTPS
+
+<img width="1113" height="530" alt="image" src="https://github.com/user-attachments/assets/683e9f9f-06eb-48c3-b52a-5e1df47a3e21" />
+
+
+<img width="1111" height="556" alt="image" src="https://github.com/user-attachments/assets/778f81d2-bb92-4401-ba81-e99d03f47e41" />
+
+<img width="1105" height="538" alt="image" src="https://github.com/user-attachments/assets/acc08c1b-7c30-4eda-b8a3-60abe14a255a" />
 
 ---
 
