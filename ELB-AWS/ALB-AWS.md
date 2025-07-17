@@ -206,6 +206,8 @@ resource "aws_lb_target_group" "my_app" {
 
 ## 🛡️ Security Group pentru ALB
 
+<img width="1115" height="551" alt="Screenshot 2025-07-17 at 12 34 03" src="https://github.com/user-attachments/assets/81836dde-bda9-42a1-b56b-ba88a615d81e" />
+
 ### 🔄 Flux de trafic (simplificat)
 
 ```
@@ -300,16 +302,44 @@ health_check {
 
 ---
 
-## 🖼️ Screenshots: Configure Sticky Sessions in AWS Console
+---
 
-### Step 1: Select Load Balancer in EC2
-![Step 1: Select Load Balancer in EC2](./alb_step1.png)
+## 🖱️ Cum activezi Sticky Sessions în AWS Console (fără imagini)
 
-### Step 2: Go to Target Groups section
-![Step 2: Go to Target Groups section](./alb_step2.png)
+### 🔐 Scenariu:
+Ai un Application Load Balancer configurat (ALB) și vrei ca utilizatorii să fie trimiși mereu la aceeași instanță backend pentru toată durata sesiunii lor.
 
-### Step 3: Select the Target Group and go to Attributes tab
-![Step 3: Select the Target Group and go to Attributes tab](./alb_step3.png)
+---
 
-### Step 4: Enable Stickiness and set duration
-![Step 4: Enable Stickiness and set duration](./alb_step4.png)
+### 🔹 Pași detaliați:
+
+#### ✅ Pasul 1: Selectează Load Balancer-ul
+1. Intră în consola [AWS Management Console](https://console.aws.amazon.com/)
+2. Navighează la serviciul **EC2**
+3. În meniul din stânga, mergi la **"Load Balancers"**
+4. Selectează ALB-ul dorit din listă (de tip `application`)
+
+---
+
+#### ✅ Pasul 2: Accesează Target Groups
+1. Tot în meniul lateral din EC2, accesează secțiunea **"Target Groups"**
+2. Găsește Target Group-ul asociat listener-ului ALB (de obicei e legat de portul 80 sau 443)
+3. Dă click pe Target Group
+
+---
+
+#### ✅ Pasul 3: Activează Sticky Sessions
+1. După ce ai intrat în pagina target group-ului, mergi la tabul **"Attributes"**
+2. Click pe butonul **"Edit"**
+3. La secțiunea **"Stickiness"**, activează opțiunea:
+   - `Stickiness: Enabled`
+   - `Type: Application-based (lb_cookie)`
+4. Setează durata în secunde (ex: `3600` pentru 1 oră)
+5. Apasă **"Save changes"**
+
+---
+
+### 📌 Rezultat:
+- ALB va trimite un cookie `AWSALB=...` către client.
+- Cât timp cookie-ul este valabil, toate requesturile utilizatorului vor fi direcționate către **același target** (ex: același EC2).
+- Dacă targetul devine `unhealthy`, ALB va alege altul automat.
