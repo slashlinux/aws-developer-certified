@@ -197,3 +197,63 @@ resource "aws_lb_target_group" "my_app" {
 🎯 După acești pași, utilizatorul va primi un cookie `AWSALB=...` care îl va păstra pe același backend până expiră cookie-ul sau instanța devine indisponibilă.
 
 ---
+
+
+---
+
+## ❤️ Health Check în ALB
+
+ALB verifică în mod periodic starea backend-urilor (EC2, ECS, IP etc.) printr-un mecanism numit **health check**.
+
+### 🔹 Ce face?
+Trimite cereri HTTP/HTTPS către un endpoint definit (ex: `/health`) pentru a vedea dacă targetul răspunde corespunzător.
+
+### ⚙️ Parametri principali:
+
+| Parametru              | Descriere |
+|------------------------|-----------|
+| **Path**               | Ex: `/health` – endpoint pe care se face verificarea |
+| **Protocol**           | `HTTP` sau `HTTPS` |
+| **Port**               | Portul targetului (ex: 80, 8080) |
+| **Healthy threshold**  | Numărul de răspunsuri bune până când targetul devine "healthy" |
+| **Unhealthy threshold**| Numărul de răspunsuri greșite până când targetul devine "unhealthy" |
+| **Timeout**            | Cât timp așteaptă ALB un răspuns (ex: 5 secunde) |
+| **Interval**           | Cât de des se face health check-ul (ex: la 30 secunde) |
+| **Matcher**            | Codul HTTP așteptat (ex: `200`) |
+
+### ✅ Exemplu din Terraform:
+
+```hcl
+health_check {
+  path                = "/health"
+  protocol            = "HTTP"
+  port                = "traffic-port"
+  interval            = 30
+  timeout             = 5
+  healthy_threshold   = 3
+  unhealthy_threshold = 2
+  matcher             = "200"
+}
+```
+
+### 🧠 Recomandări DevOps:
+
+- Endpoint-ul `/health` trebuie să răspundă rapid și simplu (ex: fără baze de date sau autentificare).
+- Nu folosi `readinessProbe` Kubernetes complicat pentru health check extern – folosește ceva dedicat (ex: returnează `200 OK` direct).
+- Health check-ul influențează dacă ALB mai trimite trafic la acel target → deci este critic pentru uptime.
+
+---
+
+## 🖼️ Screenshots: Configure Sticky Sessions in AWS Console
+
+### Step 1: Select Load Balancer in EC2
+![Step 1: Select Load Balancer in EC2](./alb_step1.png)
+
+### Step 2: Go to Target Groups section
+![Step 2: Go to Target Groups section](./alb_step2.png)
+
+### Step 3: Select the Target Group and go to Attributes tab
+![Step 3: Select the Target Group and go to Attributes tab](./alb_step3.png)
+
+### Step 4: Enable Stickiness and set duration
+![Step 4: Enable Stickiness and set duration](./alb_step4.png)
