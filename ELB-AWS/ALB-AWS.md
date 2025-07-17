@@ -101,6 +101,9 @@ Un utilizator se loghează pe aplicație → dar este delogat frecvent sau pierd
 ALB trimite requesturile în mod round-robin către instanțe diferite → sesiunea există doar pe instanța inițială → userul apare delogat.
 
 ✅ **Soluție**:
+
+<img width="1059" height="533" alt="image" src="https://github.com/user-attachments/assets/2b289c72-1d35-4a39-a44a-ba4ea28eaf4e" />
+
 Activează Sticky Sessions în target group:
 ```hcl
 stickiness {
@@ -109,6 +112,8 @@ stickiness {
   cookie_duration = 3600 # secunde
 }
 ```
+<img width="1053" height="542" alt="image" src="https://github.com/user-attachments/assets/43f87adc-fee5-4082-80f4-ffff859b143b" />
+
 
 #### 2. **Sesiune stocată local în instanță**
 Dacă aplicația stochează sesiunea în memorie locală (ex: în `HttpSession` în Java), nu poate fi partajată între instanțe.
