@@ -26,6 +26,9 @@ ALB este recomandat când:
 ## 🔑 Functionalități cheie
 <img width="1113" height="550" alt="image" src="https://github.com/user-attachments/assets/8a70aca9-b0d5-4119-abc4-66fccb618b92" />
 
+<img width="1083" height="543" alt="image" src="https://github.com/user-attachments/assets/ae89cc40-52f4-4ef3-989c-2622c4ef6b9a" />
+
+
 - **Host-based routing**: `api.example.com` → service A
 - **Path-based routing**: `/admin/*` → service B
 - **Header/cookie/query-based routing**
